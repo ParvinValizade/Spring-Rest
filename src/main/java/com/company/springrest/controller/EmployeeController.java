@@ -3,13 +3,17 @@ package com.company.springrest.controller;
 import com.company.springrest.rest.model.dto.EmployeeDto;
 import com.company.springrest.rest.model.response.EmployeeResponse;
 import com.company.springrest.service.EmployeeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/employees")
 @RequiredArgsConstructor
+@Tag(name = "Employee services")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -33,7 +37,7 @@ public class EmployeeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public  void insert(@RequestBody EmployeeDto employeeDto){
+    public  void insert(@Valid @RequestBody EmployeeDto employeeDto){
         employeeService.insert(employeeDto);
     }
 
