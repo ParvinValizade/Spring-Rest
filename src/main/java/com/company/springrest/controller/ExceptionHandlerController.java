@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.security.access.AccessDeniedException;
+
 
 @RestControllerAdvice
 public class ExceptionHandlerController {
@@ -40,6 +42,15 @@ public class ExceptionHandlerController {
         return ErrorResponse.builder()
                 .code(ErrorCodeEnum.VALIDATION_ERROR.getCode())
                 .message(fieldName + ErrorCodeEnum.VALIDATION_ERROR.getMessage())
+                .build();
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse handleAccessDenied(AccessDeniedException e){
+        return ErrorResponse.builder()
+                .code(ErrorCodeEnum.ACCESS_DENIED.getCode())
+                .message(ErrorCodeEnum.ACCESS_DENIED.getMessage())
                 .build();
     }
 

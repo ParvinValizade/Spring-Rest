@@ -6,6 +6,7 @@ import com.company.springrest.service.EmployeeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,12 +19,14 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    @GetMapping
+    @GetMapping()
+    @PreAuthorize("hasRole('ADMIN')")
     public EmployeeResponse getAllEmployees(){
         return employeeService.getAllEmployees();
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public EmployeeDto getEmployee(@PathVariable("id") long id){
         return employeeService.getEmployee(id);
     }
