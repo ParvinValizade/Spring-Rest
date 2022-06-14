@@ -1,0 +1,8 @@
+{
+  "name": "learn-spring-rest",
+  "buildpacks": [
+    {
+      "url": "heroku/maven"
+    }
+  ]
+}
