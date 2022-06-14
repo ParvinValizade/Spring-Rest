@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: "postgres://joagqdettnagep:081a61fd5471c516454ed48c91222a2e512f45f22a1ba06b21af4c037e05488e@ec2-54-157-16-196.compute-1.amazonaws.com:5432/dat6snqpd9stse"
-    username: "joagqdettnagep"
-    password: "081a61fd5471c516454ed48c91222a2e512f45f22a1ba06b21af4c037e05488e"
+    url: postgres://joagqdettnagep:081a61fd5471c516454ed48c91222a2e512f45f22a1ba06b21af4c037e05488e@ec2-54-157-16-196.compute-1.amazonaws.com:5432/dat6snqpd9stse
+    username: joagqdettnagep
+    password: 081a61fd5471c516454ed48c91222a2e512f45f22a1ba06b21af4c037e05488e
 
 server:
   servlet:
