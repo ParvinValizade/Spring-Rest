@@ -20,13 +20,13 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping()
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public EmployeeResponse getAllEmployees(){
         return employeeService.getAllEmployees();
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+//    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public EmployeeDto getEmployee(@PathVariable("id") long id){
         return employeeService.getEmployee(id);
     }
